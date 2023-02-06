@@ -1,0 +1,69 @@
+{
+	"compiler": {
+		"version": "0.8.18+commit.87f61d96"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "value",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256[3]",
+						"name": "rgbs",
+						"type": "uint256[3]"
+					}
+				],
+				"name": "renderSvg",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "svg",
+						"type": "string"
+					}
+				],
+				"stateMutability": "pure",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"Uints_flat.sol": "segments"
+		},
+		"evmVersion": "paris",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"Uints_flat.sol": {
+			"keccak256": "0x95d521af35f5ccbb21272ccde56720aebdce5459ed293f858ee79095faad3af8",
+			"urls": [
+				"bzz-raw://56b56516310cca78faee58fc65d4b2c3e2946a32e873f637a848710ced58c097",
+				"dweb:/ipfs/QmSUyW1ECgo99qxbsta9DXQD386t8j37f95DQr6aVJ34vp"
+			]
+		}
+	},
+	"version": 1
+}
