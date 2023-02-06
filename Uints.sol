@@ -89,8 +89,9 @@ contract Uints is ERC721A, Ownable, IERC4906 {
     }
 
     function getValue(uint256 tokenId) public view returns (uint) {
-        require(_exists(tokenId), "invalid token");
-        if (newValues[tokenId] > 0) {
+        if (!_exists(tokenId)) {
+            return 0;
+        } else if (newValues[tokenId] > 0) {
             return newValues[tokenId];
         } else {
             return utils.initValue(tokenId);
@@ -98,18 +99,18 @@ contract Uints is ERC721A, Ownable, IERC4906 {
     }
 
     function tokenURI(uint256 tokenId) public view virtual override(ERC721A, IERC721A) returns (string memory) {
-        string memory burned;
+        bool burned;
         uint value;
 
         if (newValues[tokenId] > 0) {
             value = newValues[tokenId];
-            burned = "No";
+            burned = false;
         } else if (newValues[tokenId] == 0 && !_exists(tokenId)) {
             value = 0;
-            burned = "Yes";
+            burned = true;
         } else {
             value = utils.initValue(tokenId);
-            burned = "No";
+            burned = false;
         }
 
         return segments.getMetadata(tokenId, value, baseColors[tokenId], burned);

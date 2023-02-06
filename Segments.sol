@@ -55,29 +55,39 @@ library segments {
         return baseColorNames[index];
     }
 
-    function getMetadata(uint tokenId, uint value, uint baseColor, string memory burned) internal pure returns (string memory) {
+    function getMetadata(uint tokenId, uint value, uint baseColor, bool burned) internal pure returns (string memory) {
         uint[3] memory rgbs = utils.getRgbs(tokenId, baseColor);
-        string memory json = string(abi.encodePacked(
+        string memory json;
+
+        if (burned) {
+            json = string(abi.encodePacked(
             '{"name": "UINTS ',
             utils.uint2str(tokenId),
-            '", "description": "numbers are art, and we are artists.", "attributes":[{"trait_type": "Number", "value": ',
-            utils.uint2str(value),
-            '},{"trait_type": "Mint Phase", "value": "',
-            utils.uint2str(utils.getMintPhase(tokenId)),
-            '"},{"trait_type": "Burned", "value": "',
-            burned,
-            '"},{"trait_type": "Base Color", "value": "',
-            getBaseColorName(baseColor),
-            '"},{"trait_type": "R", "value": ',
-            utils.uint2str(rgbs[0]),
-            '},{"trait_type": "G", "value": ',
-            utils.uint2str(rgbs[1]),
-            '},{"trait_type": "B", "value": ',
-            utils.uint2str(rgbs[2]),
-            '}], "image": "data:image/svg+xml;base64,',
+            ' [BURNED]", "description": "Numbers are art, and we are artists.", "attributes":[{"trait_type": "Burned", "value": "Yes"}], "image": "data:image/svg+xml;base64,',
             Base64.encode(bytes(renderSvg(value, rgbs))),
             '"}'
         ));
+        } else {
+            json = string(abi.encodePacked(
+            '{"name": "UINTS ',
+            utils.uint2str(tokenId),
+            '", "description": "Numbers are art, and we are artists.", "attributes":[{"trait_type": "Number", "max_value": 9999, "value": ',
+            utils.uint2str(value),
+            '},{"display_type": "number", "trait_type": "Mint Phase", "value": ',
+            utils.uint2str(utils.getMintPhase(tokenId)),
+            '},{"trait_type": "Burned", "value": "No"},{"trait_type": "Base Color", "value": "',
+            getBaseColorName(baseColor),
+            '"},{"trait_type": "Color", "value": "RGB(',
+            utils.uint2str(rgbs[0]),
+            ",",
+            utils.uint2str(rgbs[1]),
+            ",",
+            utils.uint2str(rgbs[2]),
+            ')"}], "image": "data:image/svg+xml;base64,',
+            Base64.encode(bytes(renderSvg(value, rgbs))),
+            '"}'
+        ));
+        }
 
         return string(abi.encodePacked(
             "data:application/json;base64,",
