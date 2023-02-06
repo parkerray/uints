@@ -4,37 +4,7 @@
 	},
 	"language": "Solidity",
 	"output": {
-		"abi": [
-			{
-				"inputs": [
-					{
-						"internalType": "uint256",
-						"name": "input",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "min",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "max",
-						"type": "uint256"
-					}
-				],
-				"name": "random",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "pure",
-				"type": "function"
-			}
-		],
+		"abi": [],
 		"devdoc": {
 			"kind": "dev",
 			"methods": {},
@@ -48,7 +18,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"Uints_flat.sol": "utils"
+			"Utilities.sol": "utils"
 		},
 		"evmVersion": "paris",
 		"libraries": {},
@@ -62,11 +32,12 @@
 		"remappings": []
 	},
 	"sources": {
-		"Uints_flat.sol": {
-			"keccak256": "0x95d521af35f5ccbb21272ccde56720aebdce5459ed293f858ee79095faad3af8",
+		"Utilities.sol": {
+			"keccak256": "0x730e1014b6a8e551d8f5228e7745d528a9738de4c805b7315673ef0c5fcce45c",
+			"license": "MIT",
 			"urls": [
-				"bzz-raw://56b56516310cca78faee58fc65d4b2c3e2946a32e873f637a848710ced58c097",
-				"dweb:/ipfs/QmSUyW1ECgo99qxbsta9DXQD386t8j37f95DQr6aVJ34vp"
+				"bzz-raw://944fd7e2361214c5f2c97953f4946c7ccb6b736a45f5be0c8906b88fb3d2c2db",
+				"dweb:/ipfs/Qmb1YXtcgnRokVhVTuzLMGvuqtGvjkjkjrFoYB4J4T1PEh"
 			]
 		}
 	},

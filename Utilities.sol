@@ -47,18 +47,61 @@ library utils {
     // Get a pseudo random number
     function random(uint input, uint min, uint max) internal pure returns (uint) {
         uint randRange = max - min;
-        return max - (uint(keccak256(abi.encodePacked(input))) % randRange) - 1;
+        return max - (uint(keccak256(abi.encodePacked(input + 9999))) % randRange) - 1;
     }
 
     function initValue(uint tokenId) internal pure returns (uint value) {
         if (tokenId < 1000) {
-            value = random(tokenId, 1, 100);
-        } else if (tokenId < 5000) {
-            value = random(tokenId, 1, 50);
+            value = random(tokenId, 1, 51);
+        } else if (tokenId < 2000) {
+            value = random(tokenId, 1, 46);
+        }  else if (tokenId < 3000) {
+            value = random(tokenId, 1, 41);
+        }  else if (tokenId < 4000) {
+            value = random(tokenId, 1, 36);
+        }  else if (tokenId < 5000) {
+            value = random(tokenId, 1, 31);
+        }  else if (tokenId < 6000) {
+            value = random(tokenId, 1, 26);
+        }  else if (tokenId < 7000) {
+            value = random(tokenId, 1, 21);
+        }  else if (tokenId < 8000) {
+            value = random(tokenId, 1, 16);
+        }  else if (tokenId < 9000) {
+            value = random(tokenId, 1, 11);
+        }  else if (tokenId < 10000) {
+            value = random(tokenId, 1, 6);
         } else {
-            value = random(tokenId, 1, 10);
+            value = 1;
         }
         return value;
+    }
+
+    function getRgbs(uint tokenId, uint baseColor) internal pure returns (uint256[3] memory rgbValues) {
+        if (baseColor > 0) {
+            for (uint i = 0; i < 3; i++) {
+                if (baseColor == i + 1) {
+                    rgbValues[i] = 255;
+                } else {
+                    rgbValues[i] = utils.random(tokenId + i, 0, 256);
+                }
+            }
+        } else {
+            for (uint i = 0; i < 3; i++) {
+                rgbValues[i] = 255;
+            }
+        }
+        return rgbValues;
+    }
+
+    function getMintPhase(uint tokenId) internal pure returns (uint mintPhase) {
+        if (tokenId <= 1000) {
+            mintPhase = 1;
+        } else if (tokenId <= 5000) {
+            mintPhase = 2;
+        } else {
+            mintPhase = 3;
+        }
     }
 
     function secondsRemaining(uint end) internal view returns (uint) {
