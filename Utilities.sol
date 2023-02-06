@@ -47,7 +47,7 @@ library utils {
     // Get a pseudo random number
     function random(uint input, uint min, uint max) internal pure returns (uint) {
         uint randRange = max - min;
-        return max - (uint(keccak256(abi.encodePacked(input + 9999))) % randRange) - 1;
+        return max - (uint(keccak256(abi.encodePacked(input + 2023))) % randRange) - 1;
     }
 
     function initValue(uint tokenId) internal pure returns (uint value) {
