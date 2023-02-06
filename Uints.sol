@@ -84,7 +84,7 @@ contract Uints is ERC721A, Ownable, IERC4906 {
 
         // Why was 6 afraid of 7? Because 7 8 9!
         newValues[tokens[0]] = sum;
-        baseColors[tokens[0]] = utils.random(tokens[0] + block.timestamp, 1, 4);
+        baseColors[tokens[0]] = utils.random(tokens[0], 1, 4);
         emit MetadataUpdate(tokens[0]);
     }
 
