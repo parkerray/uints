@@ -1,0 +1,315 @@
+{
+	"compiler": {
+		"version": "0.8.18+commit.87f61d96"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"components": [
+							{
+								"internalType": "uint256",
+								"name": "red",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "green",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "blue",
+								"type": "uint256"
+							}
+						],
+						"internalType": "struct UINTSEdition.Rgb",
+						"name": "colors",
+						"type": "tuple"
+					}
+				],
+				"name": "addToAnimation",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "animationColors",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "red",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "green",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "blue",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "animationIndex",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "broadcastCounter",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "number",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "tokenValue",
+						"type": "uint256"
+					}
+				],
+				"name": "broadcastNumber",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "currentTime",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "displayNumber",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "frozenUntil",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getMessageSender",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getSvg",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "id",
+						"type": "uint256"
+					}
+				],
+				"name": "getValue",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "id",
+						"type": "uint256"
+					}
+				],
+				"name": "isTokenOwner",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "minutesUntilAvailable",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "id",
+						"type": "uint256"
+					}
+				],
+				"name": "ownerOf",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "startAnimationColors",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"UintsEdition.sol": "UINTSEdition"
+		},
+		"evmVersion": "paris",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"@openzeppelin/contracts/utils/Base64.sol": {
+			"keccak256": "0x5f3461639fe20794cfb4db4a6d8477388a15b2e70a018043084b7c4bedfa8136",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://77e5309e2cc4cdc3395214edb0ff43ff5a5f7373f5a425383e540f6fab530f96",
+				"dweb:/ipfs/QmTV8DZ9knJDa3b5NPBFQqjvTzodyZVjRUg5mx5A99JPLJ"
+			]
+		},
+		"CanvasArt.sol": {
+			"keccak256": "0xec314ec28fdb04c6e1f8b4b8d9c00b298b123f81c30488b0ee4bdcce2c36b546",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://d0e8ba22341c99fd2ad657f608a7605ac2dc2f85ba4dc6216c0f3a98c3941e71",
+				"dweb:/ipfs/QmPyyYvrJv6og95jcJPMNqZv7uTsPCLau1Qtny8K6Zyigh"
+			]
+		},
+		"UintsEdition.sol": {
+			"keccak256": "0xfdbf6ba6a26e842ff7a89ab8144ac9f769bd82e5dd1585b34c57a8eb75aef972",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://8076fb61d6dcceb74a090a896e77f00c6b573b708f10015bbd47728f4bd8eb76",
+				"dweb:/ipfs/QmRKcJBW86YPvkerY2C3v4LMj5NqezErkDSk7rnhVqXfBQ"
+			]
+		},
+		"Utilities.sol": {
+			"keccak256": "0xbf01b4014d70376bec25ceaac494f5e1a8c93b621ea20036e19c13b26369fd05",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://b4a347a0681a9298b303aa79316001e7f200f7e7208731e57bd3da81f580a08a",
+				"dweb:/ipfs/QmUmEQKjB6gJDwB5mMqj9fNXTvgDSxwxcjzEikt3s1scck"
+			]
+		}
+	},
+	"version": 1
+}

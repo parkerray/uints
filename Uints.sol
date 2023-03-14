@@ -29,7 +29,7 @@ contract Uints is ERC721A, Ownable, IERC4906 {
     
     event CountdownExtended(uint _finalBlock);
 
-    uint public price = 3000000000000000; //.003 eth
+    uint public price = 0; //3000000000000000 //.003 eth
     bool public isCombinable = false;
     uint public finalMintingBlock;
 
