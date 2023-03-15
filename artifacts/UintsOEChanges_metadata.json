@@ -281,6 +281,44 @@
 				"type": "function"
 			},
 			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "counter",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "position",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "color",
+						"type": "string"
+					},
+					{
+						"internalType": "address",
+						"name": "initiator",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "uintsId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "timestamp",
+						"type": "uint256"
+					}
+				],
+				"name": "mint",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
 				"inputs": [],
 				"name": "name",
 				"outputs": [
@@ -323,6 +361,57 @@
 					}
 				],
 				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"components": [
+							{
+								"internalType": "uint256",
+								"name": "counter",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "position",
+								"type": "uint256"
+							},
+							{
+								"internalType": "string",
+								"name": "color",
+								"type": "string"
+							},
+							{
+								"internalType": "address",
+								"name": "initiator",
+								"type": "address"
+							},
+							{
+								"internalType": "uint256",
+								"name": "uintsId",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "timestamp",
+								"type": "uint256"
+							}
+						],
+						"internalType": "struct UintsOEChanges.Receipt",
+						"name": "receipt",
+						"type": "tuple"
+					}
+				],
+				"name": "renderSvg",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "pure",
 				"type": "function"
 			},
 			{
@@ -404,6 +493,19 @@
 			{
 				"inputs": [
 					{
+						"internalType": "address",
+						"name": "contractAddress",
+						"type": "address"
+					}
+				],
+				"name": "setEditionContract",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
 						"internalType": "bytes4",
 						"name": "interfaceId",
 						"type": "bytes4"
@@ -445,7 +547,7 @@
 				"outputs": [
 					{
 						"internalType": "string",
-						"name": "",
+						"name": "result",
 						"type": "string"
 					}
 				],
@@ -497,6 +599,13 @@
 					}
 				],
 				"name": "transferOwnership",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "withdraw",
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
@@ -670,6 +779,14 @@
 				"dweb:/ipfs/QmYqEbJML4jB1GHbzD4cUZDtJg5wVwNm3vDJq1GbyDus8y"
 			]
 		},
+		"@openzeppelin/contracts/utils/Base64.sol": {
+			"keccak256": "0x5f3461639fe20794cfb4db4a6d8477388a15b2e70a018043084b7c4bedfa8136",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://77e5309e2cc4cdc3395214edb0ff43ff5a5f7373f5a425383e540f6fab530f96",
+				"dweb:/ipfs/QmTV8DZ9knJDa3b5NPBFQqjvTzodyZVjRUg5mx5A99JPLJ"
+			]
+		},
 		"@openzeppelin/contracts/utils/Context.sol": {
 			"keccak256": "0xe2e337e6dde9ef6b680e07338c493ebea1b5fd09b43424112868e9cc1706bca7",
 			"license": "MIT",
@@ -679,11 +796,11 @@
 			]
 		},
 		"Uints_OE_Changes.sol": {
-			"keccak256": "0x48e00eeb510834544b3e36f47c483a69e0423cfc29321b03f91e32369930c221",
+			"keccak256": "0x8c411da8c93eae6620657800e8f4541a60afc7e2e88b7b1d6c79e7fc89ba3b84",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://5b041f9098d4bf8f0a5b50a5e8bb8e2c1310df2736e63456e552729e7564df11",
-				"dweb:/ipfs/QmSqe9nXKsxDSX4xsopWaUYkiUjUx49TGDi4FoxZt8jH6e"
+				"bzz-raw://20a012a0a48e5d34e42b8deb3d9839c5c959dc9d418a70bc60c8da99572cd7a6",
+				"dweb:/ipfs/QmeCSsPjGkUJfZUcZroJyifkbwRPCEmM85nWNX1oeeYCR9"
 			]
 		},
 		"erc721a/contracts/ERC721A.sol": {

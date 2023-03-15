@@ -77,7 +77,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"Uints_OE.sol": "IProofOfBroadcast"
+			"UintsEdition.sol": "IProofOfBroadcast"
 		},
 		"evmVersion": "paris",
 		"libraries": {},
@@ -115,12 +115,28 @@
 				"dweb:/ipfs/QmRK2Y5Yc6BK7tGKkgsgn3aJEQGi5aakeSPZvS65PV8Xp3"
 			]
 		},
-		"Uints_OE.sol": {
-			"keccak256": "0x24560d39a494615535e40f3a0e4c04c789e6ea5657b862c16e4d1d2a6a2b26e3",
+		"EditionArt.sol": {
+			"keccak256": "0xc3a320aee24843ea58d1aaad6799d72edba74a05f80b6942a4c9b809f9ae27d3",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://6a24bbde9cdd925fc68b7497bb9d33a5e1ae138402ab62bcb8aef1c2d19c16a2",
-				"dweb:/ipfs/QmdNaPZ5tSxQt77cbbbruJ1hf934axQAuENUaDPEsrrKGx"
+				"bzz-raw://5c7cdc87387b5a3da9af7d3abce74e10b0c0712acb26b20327ba1522f1865dbb",
+				"dweb:/ipfs/QmaHpL1ur24HfoKNGXCTTaCqcqFvjuVavFBA57RCvP1js6"
+			]
+		},
+		"UintsEdition.sol": {
+			"keccak256": "0xd8350cd9b2e9335645278f8e786361d8f411ca3508791221d1967916c002640d",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://5aebe1e392c7697707729be4ba251145f53f2dc1ab4254a28211395b23401224",
+				"dweb:/ipfs/QmdYJW1jSoV2EY88rrWSpn317joJWY23aHxJj7JTLoDYfw"
+			]
+		},
+		"Utilities.sol": {
+			"keccak256": "0xbf01b4014d70376bec25ceaac494f5e1a8c93b621ea20036e19c13b26369fd05",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://b4a347a0681a9298b303aa79316001e7f200f7e7208731e57bd3da81f580a08a",
+				"dweb:/ipfs/QmUmEQKjB6gJDwB5mMqj9fNXTvgDSxwxcjzEikt3s1scck"
 			]
 		},
 		"erc721a/contracts/ERC721A.sol": {

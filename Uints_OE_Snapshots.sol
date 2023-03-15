@@ -30,9 +30,9 @@ interface IUintsOE {
 
 contract UintsOESnapshots is ERC721A, Ownable {
 
-    constructor() ERC721A("UINTS - OE Snapshots", "UOESNAPS") {}
+    constructor() ERC721A("UINTS Edition Snapshots", "UINTSEDSS") {}
 
-    IUintsOE _editionContract = IUintsOE(0x93f8dddd876c7dBE3323723500e83E202A7C96CC);
+    IUintsOE _editionContract = IUintsOE(0x05A8d17EAFa10EA149788c67a8e9A028B8241334);
 
     struct Snapshot {
         address capturedBy;
@@ -58,9 +58,16 @@ contract UintsOESnapshots is ERC721A, Ownable {
     function tokenURI(uint256 tokenId) public view virtual override returns (string memory result) {
         string memory svg = _editionContract.renderSvg(snapshots[tokenId].canvasStyles);
         string memory json = string(abi.encodePacked(
-            '{"name": "UINTS OE - SNAPSHOT ',
+            '{"name": "UINTS Edition Snapshot ',
             _toString(tokenId),
-            '", "description": "This is a test", "image": "data:image/svg+xml;base64,',
+            '", "description": "UINTS Edition Snapshots are on-chain records of artwork from the UINTS Edition collection.", ',
+            '"attributes": [{"trait_type": "Captured by", "value": "0x',
+            toAsciiString(snapshots[tokenId].capturedBy),
+            '"},{"display_type": "number", "trait_type": "Art version", "value": ',
+            _toString(snapshots[tokenId].artVersion),
+            '},{"display_type": "date", "trait_type": "Date", "value": ',
+            _toString(snapshots[tokenId].timestamp),
+            '}], "image": "data:image/svg+xml;base64,',
             Base64.encode(bytes(svg)),
             '"}'
         ));
@@ -69,6 +76,23 @@ contract UintsOESnapshots is ERC721A, Ownable {
             "data:application/json;base64,",
             Base64.encode(bytes(json))
         ));
+    }
+
+    function toAsciiString(address x) internal pure returns (string memory) {
+        bytes memory s = new bytes(40);
+        for (uint i = 0; i < 20; i++) {
+            bytes1 b = bytes1(uint8(uint(uint160(x)) / (2**(8*(19 - i)))));
+            bytes1 hi = bytes1(uint8(b) / 16);
+            bytes1 lo = bytes1(uint8(b) - 16 * uint8(hi));
+            s[2*i] = char(hi);
+            s[2*i+1] = char(lo);
+        }
+        return string(s);
+    }
+
+    function char(bytes1 b) internal pure returns (bytes1 c) {
+        if (uint8(b) < 10) return bytes1(uint8(b) + 0x30);
+        else return bytes1(uint8(b) + 0x57);
     }
 
     function _startTokenId() internal view virtual override returns (uint256) {

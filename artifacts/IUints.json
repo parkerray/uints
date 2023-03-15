@@ -49,11 +49,31 @@
 		},
 		"gasEstimates": null,
 		"methodIdentifiers": {
+			"balanceOf(address)": "70a08231",
 			"getValue(uint256)": "0ff4c916",
 			"ownerOf(uint256)": "6352211e"
 		}
 	},
 	"abi": [
+		{
+			"inputs": [
+				{
+					"internalType": "address",
+					"name": "owner",
+					"type": "address"
+				}
+			],
+			"name": "balanceOf",
+			"outputs": [
+				{
+					"internalType": "uint256",
+					"name": "",
+					"type": "uint256"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
 		{
 			"inputs": [
 				{

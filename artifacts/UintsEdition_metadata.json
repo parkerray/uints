@@ -354,25 +354,6 @@
 			{
 				"inputs": [
 					{
-						"internalType": "uint256",
-						"name": "id",
-						"type": "uint256"
-					}
-				],
-				"name": "getBaseColor",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
 						"internalType": "address",
 						"name": "owner",
 						"type": "address"
@@ -888,11 +869,11 @@
 			]
 		},
 		"UintsEdition.sol": {
-			"keccak256": "0xcdaaed52c7d67f32ddbf1095ee73a47a521119abcf9c11cabd40c67c63b485b5",
+			"keccak256": "0xd8350cd9b2e9335645278f8e786361d8f411ca3508791221d1967916c002640d",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://22903a1b9fd099ab82548a3e06b4687dc2becc600607c64240b61f02772729a3",
-				"dweb:/ipfs/QmS8dE6NGryJuhmGnBMLPu31hWaGp5KY7KC4bhv4dDK4N5"
+				"bzz-raw://5aebe1e392c7697707729be4ba251145f53f2dc1ab4254a28211395b23401224",
+				"dweb:/ipfs/QmdYJW1jSoV2EY88rrWSpn317joJWY23aHxJj7JTLoDYfw"
 			]
 		},
 		"Utilities.sol": {
