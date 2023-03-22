@@ -22,41 +22,80 @@ import "erc721a/contracts/ERC721A.sol";
 import "@openzeppelin/contracts/utils/Base64.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
-interface IUintsOE {
+interface IEdition {
     function getCurrentStyles() external view returns (string memory);
+    function getCurrentColors() external view returns (uint32[64] memory);
     function renderSvg(string memory styles) external pure returns (string memory);
     function changeCounter() external pure returns (uint);
 }
 
-contract UintsOESnapshots is ERC721A, Ownable {
+contract UintsEditionSnapshots is ERC721A, Ownable {
 
     constructor() ERC721A("UINTS Edition Snapshots", "UINTSEDSS") {}
 
-    IUintsOE _editionContract = IUintsOE(0x05A8d17EAFa10EA149788c67a8e9A028B8241334);
+    address _editionContract;
+
+    function setEditionContract(address contractAddress) public onlyOwner {
+        _editionContract = contractAddress;
+        iEditionContract = IEdition(contractAddress);
+    }
+
+    IEdition iEditionContract = IEdition(_editionContract);
 
     struct Snapshot {
         address capturedBy;
         uint artVersion;
         uint timestamp;
-        string canvasStyles;
+        //string canvasStyles;
+        uint32[64] colors;
     }
 
     mapping(uint => Snapshot) public snapshots;
     uint public snapshotCounter;
 
+    function getRgbColor(uint32 color) internal pure returns (string memory) {
+        uint8 r = uint8(color >> 16);
+        uint8 g = uint8(color >> 8);
+        uint8 b = uint8(color);
+        return string(abi.encodePacked(
+            'RGB(',
+            _toString(r),
+            ',',
+            _toString(g),
+            ',',
+            _toString(b),
+            ')'
+        ));
+    }
+
+    function convertColorsToStyles(uint32[64] memory colorArray) public pure returns (string memory styles) {
+        for (uint i = 0; i < 64; i++) {
+            styles = string(abi.encodePacked(
+                styles,
+                '#p',
+                _toString(i+1),
+                '{fill:',
+                getRgbColor(colorArray[i]),
+                '}'
+            ));
+        }
+    }
+
     function takeSnapshot() public {
         snapshots[snapshotCounter + 1] = Snapshot({
             capturedBy: msg.sender,
-            canvasStyles: _editionContract.getCurrentStyles(),
-            artVersion: _editionContract.changeCounter(),
-            timestamp: block.timestamp
+            //canvasStyles: iEditionContract.getCurrentStyles(),
+            artVersion: iEditionContract.changeCounter(),
+            timestamp: block.timestamp,
+            colors: iEditionContract.getCurrentColors()
         });
         _mint(msg.sender, 1);
         snapshotCounter++;
     }
 
     function tokenURI(uint256 tokenId) public view virtual override returns (string memory result) {
-        string memory svg = _editionContract.renderSvg(snapshots[tokenId].canvasStyles);
+        //string memory svg = iEditionContract.renderSvg(snapshots[tokenId].canvasStyles);
+        string memory svg = iEditionContract.renderSvg(convertColorsToStyles(snapshots[tokenId].colors));
         string memory json = string(abi.encodePacked(
             '{"name": "UINTS Edition Snapshot ',
             _toString(tokenId),

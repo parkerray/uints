@@ -29,7 +29,7 @@ interface IUints {
     function balanceOf(address owner) external view returns (uint);
 }
 
-interface IUintsOEChanges {
+interface IChanges {
     function mint(
         uint counter,
         uint position,
@@ -40,44 +40,61 @@ interface IUintsOEChanges {
         ) external;
 }
 
-contract UintsOE is ERC721A, Ownable, ERC2981 {
+contract UintsEdition is ERC721A, Ownable, ERC2981 {
 
     constructor() ERC721A("UINTS Edition", "UINTSED") {}
 
-    uint public stopPrivateMintTime;
-    uint public stopPublicMintTime;
+    uint64 public stopPrivateMintTime;
+    uint64 public stopPublicMintTime;
     uint public changeCounter;
 
-    mapping(uint => string) public colors;
+    mapping(uint => uint32) public colors;
     mapping(uint => bool) public usedTokens;
 
-    IUints _uintsContract = IUints(0xad16d876d13607499dE5BAfCbDac9d16D2acc09D);
-    IUintsOEChanges _changesContract = IUintsOEChanges(0xE139a55D9415a9147f4a17cb04eE1aB28633a794);
+    address _uintsContract;
+    address _changesContract;
 
-    function startMint() public onlyOwner {
-        stopPrivateMintTime = block.timestamp + 24 hours;
-        stopPublicMintTime = block.timestamp + 48 hours;
+    function setUintsContract(address contractAddress) public onlyOwner {
+        _uintsContract = contractAddress;
+        iUintsContract = IUints(contractAddress);
     }
 
-    function mint(uint quantity) public payable {
+    function setChangesContract(address contractAddress) public onlyOwner {
+        _changesContract = contractAddress;
+        iChangesContract = IChanges(contractAddress);
+    }
+
+    IUints iUintsContract = IUints(_uintsContract);
+    IChanges iChangesContract = IChanges(_changesContract);
+
+    function startMint() public onlyOwner {
+        stopPrivateMintTime = uint64(block.timestamp + 24 hours);
+        stopPublicMintTime = uint64(block.timestamp + 48 hours);
+    }
+
+    function checkValueOfUints(uint tokenId) public view returns (uint) {
+        return iUintsContract.getValue(tokenId);
+    }
+
+    function mint(uint quantity) public {
         if (block.timestamp < stopPrivateMintTime) {
             // private mint
-            require(_uintsContract.balanceOf(msg.sender) > 0, 'Must own UINTS during private mint phase');
-            stopPublicMintTime -= quantity * 6;
-            batchMint(quantity);
+            require(iUintsContract.balanceOf(msg.sender) > 0, 'Must own UINTS during private mint phase');
+            stopPublicMintTime -= uint64(quantity * 6);
         } else {
             // public mint
             require(block.timestamp < stopPublicMintTime, 'Mint has closed');
-            batchMint(quantity);
         }
+        batchMint(quantity);
     }
 
     function batchMint(uint quantity) internal {
-        if (quantity > 10) {
-            uint fullRuns = quantity / 10;
-            uint remainder = quantity % 10;
+        // batch minting is optimized for ERC721A
+        if (quantity > 30) {
+            uint fullRuns = quantity / 30;
+            uint remainder = quantity % 30;
             for (uint i = 0; i < fullRuns; i++) {
-                _mint(msg.sender, 10);
+                _mint(msg.sender, 30);
             }
             if (remainder > 0) {
                 _mint(msg.sender,remainder);
@@ -87,41 +104,20 @@ contract UintsOE is ERC721A, Ownable, ERC2981 {
         }
     }
 
-    function getBalance() public view returns (uint) {
-        return balanceOf(msg.sender);
-    }
-
-    function validColors(uint[3] memory rgbColors) public pure returns (bool) {
-        for (uint i = 0; i < 3; i++) {
-            if (rgbColors[i] > 255) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    function changeColor(uint position, uint[3] memory rgbColors, uint uintsId) public {
+    function changeColor(uint position, uint8[3] memory rgbColors, uint uintsId) public {
         require(position > 0 && position < 65, 'Invalid position');
-        require(validColors(rgbColors), 'Invalid color');
-        require(_uintsContract.ownerOf(uintsId) == msg.sender, 'UINTS not owned');
+        require(iUintsContract.ownerOf(uintsId) == msg.sender, 'UINTS not owned');
         require(usedTokens[uintsId] == false, 'UINTS already used');
-        require(balanceOf(msg.sender) > 0, 'Must own at least 1 Open Edition');
+        require(balanceOf(msg.sender) > 0, 'Must own at least 1 UINTS Edition');
 
-        string memory stringColor = string(abi.encodePacked(
-            'rgb(',
-            _toString(rgbColors[0]),
-            ',',
-            _toString(rgbColors[1]),
-            ',',
-            _toString(rgbColors[2]),
-            ')'
-        ));
+        uint32 colorValue = uint32(rgbColors[0]) << 16 | uint32(rgbColors[1]) << 8 | uint32(rgbColors[2]);
 
-        colors[position] = stringColor;
-        _changesContract.mint(
+        colors[position] = colorValue;
+
+        iChangesContract.mint(
             changeCounter + 1,
             position,
-            stringColor,
+            getRgbColor(colorValue),
             msg.sender,
             uintsId,
             block.timestamp
@@ -131,15 +127,44 @@ contract UintsOE is ERC721A, Ownable, ERC2981 {
         usedTokens[uintsId] = true;
     }
 
-    function changeAllColors() public {
+    function getRgbColor(uint32 color) public pure returns (string memory) {
+        uint8 r = uint8(color >> 16);
+        uint8 g = uint8(color >> 8);
+        uint8 b = uint8(color);
+        return string(abi.encodePacked(
+            'RGB(',
+            _toString(r),
+            ',',
+            _toString(g),
+            ',',
+            _toString(b),
+            ')'
+        ));
+    }
+
+    //----------------------------------------
+    // TESTING ONLY - REMOVE BEFORE DEPLOYING
+    //----------------------------------------
+
+    function changeAllColorsToRed() public {
         for (uint i = 1; i < 65; i++) {
-            changeColor(i, [block.timestamp % 255, i, i + 100], i);
+            changeColor(i, [255, 0, 0], i);
         }
     }
 
-    function mintOne() public {
-        _mint(msg.sender, 1);
+    function changeAllColorsToGreen() public {
+        for (uint i = 1; i < 65; i++) {
+            changeColor(i, [0, 255, 0], i);
+        }
     }
+
+    function changeAllColorsToBlue() public {
+        for (uint i = 1; i < 65; i++) {
+            changeColor(i, [0, 0, 255], i);
+        }
+    }
+
+    //----------------------------------------
 
     function getCurrentStyles() public view returns (string memory styles) {
         for (uint i = 1; i < 65; i++) {
@@ -148,9 +173,28 @@ contract UintsOE is ERC721A, Ownable, ERC2981 {
                 '#p',
                 _toString(i),
                 '{fill:',
-                colors[i],
+                getRgbColor(colors[i]),
                 '}'
             ));
+        }
+    }
+
+    function convertColorsToStyles(uint32[64] memory colorArray) public pure returns (string memory styles) {
+        for (uint i = 0; i < 64; i++) {
+            styles = string(abi.encodePacked(
+                styles,
+                '#p',
+                _toString(i+1),
+                '{fill:',
+                getRgbColor(colorArray[i]),
+                '}'
+            ));
+        }
+    }
+
+    function getCurrentColors() public view returns (uint32[64] memory colorArray) {
+        for (uint i = 1; i < 65; i++) {
+            colorArray[i-1] = colors[i];
         }
     }
 

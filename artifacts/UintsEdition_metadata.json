@@ -203,35 +203,6 @@
 			{
 				"inputs": [
 					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"name": "animationColors",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "red",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "green",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "blue",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
 						"internalType": "address",
 						"name": "to",
 						"type": "address"
@@ -267,48 +238,71 @@
 				"type": "function"
 			},
 			{
+				"inputs": [],
+				"name": "changeAllColorsToBlue",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "changeAllColorsToGreen",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "changeAllColorsToRed",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
 				"inputs": [
 					{
 						"internalType": "uint256",
-						"name": "number",
+						"name": "position",
 						"type": "uint256"
 					},
+					{
+						"internalType": "uint8[3]",
+						"name": "rgbColors",
+						"type": "uint8[3]"
+					},
+					{
+						"internalType": "uint256",
+						"name": "uintsId",
+						"type": "uint256"
+					}
+				],
+				"name": "changeColor",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "changeCounter",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
 					{
 						"internalType": "uint256",
 						"name": "tokenId",
 						"type": "uint256"
-					},
-					{
-						"components": [
-							{
-								"internalType": "uint256",
-								"name": "red",
-								"type": "uint256"
-							},
-							{
-								"internalType": "uint256",
-								"name": "green",
-								"type": "uint256"
-							},
-							{
-								"internalType": "uint256",
-								"name": "blue",
-								"type": "uint256"
-							}
-						],
-						"internalType": "struct UintsEdition.Rgb",
-						"name": "colors",
-						"type": "tuple"
 					}
 				],
-				"name": "broadcast",
-				"outputs": [],
-				"stateMutability": "payable",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "broadcastCounter",
+				"name": "checkValueOfUints",
 				"outputs": [
 					{
 						"internalType": "uint256",
@@ -320,16 +314,41 @@
 				"type": "function"
 			},
 			{
-				"inputs": [],
-				"name": "broadcastNumber",
-				"outputs": [
+				"inputs": [
 					{
 						"internalType": "uint256",
 						"name": "",
 						"type": "uint256"
 					}
 				],
+				"name": "colors",
+				"outputs": [
+					{
+						"internalType": "uint32",
+						"name": "",
+						"type": "uint32"
+					}
+				],
 				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint32[64]",
+						"name": "colorArray",
+						"type": "uint32[64]"
+					}
+				],
+				"name": "convertColorsToStyles",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "styles",
+						"type": "string"
+					}
+				],
+				"stateMutability": "pure",
 				"type": "function"
 			},
 			{
@@ -349,6 +368,51 @@
 					}
 				],
 				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getCurrentColors",
+				"outputs": [
+					{
+						"internalType": "uint32[64]",
+						"name": "colorArray",
+						"type": "uint32[64]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getCurrentStyles",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "styles",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint32",
+						"name": "color",
+						"type": "uint32"
+					}
+				],
+				"name": "getRgbColor",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "pure",
 				"type": "function"
 			},
 			{
@@ -376,19 +440,6 @@
 				"type": "function"
 			},
 			{
-				"inputs": [],
-				"name": "lockedUntil",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
 				"inputs": [
 					{
 						"internalType": "uint256",
@@ -399,32 +450,6 @@
 				"name": "mint",
 				"outputs": [],
 				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "mintCloseTime",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "minutesUntilUnlocked",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "view",
 				"type": "function"
 			},
 			{
@@ -473,10 +498,58 @@
 				"type": "function"
 			},
 			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "styles",
+						"type": "string"
+					}
+				],
+				"name": "renderSvg",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "pure",
+				"type": "function"
+			},
+			{
 				"inputs": [],
 				"name": "renounceOwnership",
 				"outputs": [],
 				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_tokenId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_salePrice",
+						"type": "uint256"
+					}
+				],
+				"name": "royaltyInfo",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
 				"type": "function"
 			},
 			{
@@ -531,19 +604,6 @@
 				"type": "function"
 			},
 			{
-				"inputs": [],
-				"name": "secondsUntilUnlocked",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
 				"inputs": [
 					{
 						"internalType": "address",
@@ -562,10 +622,80 @@
 				"type": "function"
 			},
 			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "contractAddress",
+						"type": "address"
+					}
+				],
+				"name": "setChangesContract",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "wallet",
+						"type": "address"
+					},
+					{
+						"internalType": "uint96",
+						"name": "fee",
+						"type": "uint96"
+					}
+				],
+				"name": "setRoyalty",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "contractAddress",
+						"type": "address"
+					}
+				],
+				"name": "setUintsContract",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
 				"inputs": [],
 				"name": "startMint",
 				"outputs": [],
 				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "stopPrivateMintTime",
+				"outputs": [
+					{
+						"internalType": "uint64",
+						"name": "",
+						"type": "uint64"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "stopPublicMintTime",
+				"outputs": [
+					{
+						"internalType": "uint64",
+						"name": "",
+						"type": "uint64"
+					}
+				],
+				"stateMutability": "view",
 				"type": "function"
 			},
 			{
@@ -669,6 +799,25 @@
 				"type": "function"
 			},
 			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "usedTokens",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
 				"inputs": [],
 				"name": "withdraw",
 				"outputs": [],
@@ -717,6 +866,9 @@
 				"renounceOwnership()": {
 					"details": "Leaves the contract without owner. It will not be possible to call `onlyOwner` functions anymore. Can only be called by the current owner. NOTE: Renouncing ownership will leave the contract without an owner, thereby removing any functionality that is only available to the owner."
 				},
+				"royaltyInfo(uint256,uint256)": {
+					"details": "Returns how much royalty is owed and to whom, based on a sale price that may be denominated in any unit of exchange. The royalty amount is denominated and should be paid in that same unit of exchange."
+				},
 				"safeTransferFrom(address,address,uint256)": {
 					"details": "Equivalent to `safeTransferFrom(from, to, tokenId, '')`."
 				},
@@ -725,9 +877,6 @@
 				},
 				"setApprovalForAll(address,bool)": {
 					"details": "Approve or remove `operator` as an operator for the caller. Operators can call {transferFrom} or {safeTransferFrom} for any token owned by the caller. Requirements: - The `operator` cannot be the caller. Emits an {ApprovalForAll} event."
-				},
-				"supportsInterface(bytes4)": {
-					"details": "Returns true if this contract implements the interface defined by `interfaceId`. See the corresponding [EIP section](https://eips.ethereum.org/EIPS/eip-165#how-interfaces-are-identified) to learn more about how these ids are created. This function call must use less than 30000 gas."
 				},
 				"symbol()": {
 					"details": "Returns the token collection symbol."
@@ -822,7 +971,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"UintsEdition.sol": "UintsEdition"
+			"Uints_OE.sol": "UintsEdition"
 		},
 		"evmVersion": "paris",
 		"libraries": {},
@@ -844,6 +993,22 @@
 				"dweb:/ipfs/QmYqEbJML4jB1GHbzD4cUZDtJg5wVwNm3vDJq1GbyDus8y"
 			]
 		},
+		"@openzeppelin/contracts/interfaces/IERC2981.sol": {
+			"keccak256": "0xa812eed728198acd2c30d06950a5bea8d68436e4f694dd892273266ec2f79f5b",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://f5522afc5c222c810d9ad67c45f37cb7169452fcf76692cad10ac8153c068daa",
+				"dweb:/ipfs/QmX4XgnDp7pyvojQ6g5tacrUMCf7TED2qC2vERH9Xh9feZ"
+			]
+		},
+		"@openzeppelin/contracts/token/common/ERC2981.sol": {
+			"keccak256": "0x9bc4d7eb03c4e87fd5122e03cdff5f60fa360d76925980ad022b2c6fac9876f3",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://9c6d7cfaac6b54599068126b75474c86ccbbaf386c3581abf82d9cda21b35c81",
+				"dweb:/ipfs/QmPZteoCvkiUgv4TZxv2wiEKR5KqM83UCohHnSGw1RytpM"
+			]
+		},
 		"@openzeppelin/contracts/utils/Base64.sol": {
 			"keccak256": "0x5f3461639fe20794cfb4db4a6d8477388a15b2e70a018043084b7c4bedfa8136",
 			"license": "MIT",
@@ -860,28 +1025,28 @@
 				"dweb:/ipfs/QmRK2Y5Yc6BK7tGKkgsgn3aJEQGi5aakeSPZvS65PV8Xp3"
 			]
 		},
-		"EditionArt.sol": {
-			"keccak256": "0xc3a320aee24843ea58d1aaad6799d72edba74a05f80b6942a4c9b809f9ae27d3",
+		"@openzeppelin/contracts/utils/introspection/ERC165.sol": {
+			"keccak256": "0xd10975de010d89fd1c78dc5e8a9a7e7f496198085c151648f20cba166b32582b",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://5c7cdc87387b5a3da9af7d3abce74e10b0c0712acb26b20327ba1522f1865dbb",
-				"dweb:/ipfs/QmaHpL1ur24HfoKNGXCTTaCqcqFvjuVavFBA57RCvP1js6"
+				"bzz-raw://fb0048dee081f6fffa5f74afc3fb328483c2a30504e94a0ddd2a5114d731ec4d",
+				"dweb:/ipfs/QmZptt1nmYoA5SgjwnSgWqgUSDgm4q52Yos3xhnMv3MV43"
 			]
 		},
-		"UintsEdition.sol": {
-			"keccak256": "0xd8350cd9b2e9335645278f8e786361d8f411ca3508791221d1967916c002640d",
+		"@openzeppelin/contracts/utils/introspection/IERC165.sol": {
+			"keccak256": "0x447a5f3ddc18419d41ff92b3773fb86471b1db25773e07f877f548918a185bf1",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://5aebe1e392c7697707729be4ba251145f53f2dc1ab4254a28211395b23401224",
-				"dweb:/ipfs/QmdYJW1jSoV2EY88rrWSpn317joJWY23aHxJj7JTLoDYfw"
+				"bzz-raw://be161e54f24e5c6fae81a12db1a8ae87bc5ae1b0ddc805d82a1440a68455088f",
+				"dweb:/ipfs/QmP7C3CHdY9urF4dEMb9wmsp1wMxHF6nhA2yQE5SKiPAdy"
 			]
 		},
-		"Utilities.sol": {
-			"keccak256": "0xbf01b4014d70376bec25ceaac494f5e1a8c93b621ea20036e19c13b26369fd05",
+		"Uints_OE.sol": {
+			"keccak256": "0xcf25966c7a7982bd9ec43b880c2b55c6b757005b75a3181bc708147ddcfdb1b1",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://b4a347a0681a9298b303aa79316001e7f200f7e7208731e57bd3da81f580a08a",
-				"dweb:/ipfs/QmUmEQKjB6gJDwB5mMqj9fNXTvgDSxwxcjzEikt3s1scck"
+				"bzz-raw://f28e6c961e80db2a55d0f2b85704a6d40e5392bb791f71477c9a5c7909df78d0",
+				"dweb:/ipfs/QmRmr3jX1DRNuR8bVqncL1vbNtZurFRZhYvU9uHscXt3ha"
 			]
 		},
 		"erc721a/contracts/ERC721A.sol": {

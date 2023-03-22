@@ -22,7 +22,7 @@ import "erc721a/contracts/ERC721A.sol";
 import "@openzeppelin/contracts/utils/Base64.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
-contract UintsOEChanges is ERC721A, Ownable {
+contract UintsEditionChanges is ERC721A, Ownable {
 
     constructor() ERC721A("UINTS Edition Changes", "UINTSEDC") {}
 

@@ -128,11 +128,11 @@
 			]
 		},
 		"Uints_OE.sol": {
-			"keccak256": "0x1dd39808eec85540074190217c93986866113cb3b0411d5a61ca469ac59fdb81",
+			"keccak256": "0xecf3c74ad6db9cb483b0c2ac3cea74eb62ca7a9c4a121f59742ad061fccd87ca",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://2b0ffe0593e39af37c781133beb747b6e61683f48e6a5b136010cab16a5b4d8d",
-				"dweb:/ipfs/Qmc61LMU2d1crpW3TbEVwHtSip564jcWoCD9bW7MH84Hgc"
+				"bzz-raw://1ac41f6077c931dbaebf490d0067186c037bfce4f1abbb4a763983aa221bf311",
+				"dweb:/ipfs/QmZ7zB6RMabPbLCEGXBX75AezzhbJ8uW1kqeMCFCx9fUDS"
 			]
 		},
 		"erc721a/contracts/ERC721A.sol": {
